@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#121923">
+  <link rel="icon" href="data:,">
+  <title>Duelo 3D · Construye y combate</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <canvas id="game" aria-label="Arena de combate 3D"></canvas>
+  <div class="vignette"></div>
+  <div class="crosshair" id="crosshair"><i></i><i></i><i></i><i></i><b></b></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">D<span>3</span></span><div><strong>DUELO 3D</strong><small>ARENA DE CONSTRUCCIÓN</small></div></div>
+    <div class="room-pill" id="roomPill">PRÁCTICA</div>
+    <button id="settingsBtn" class="icon-button" title="Ajustes y controles" aria-label="Ajustes y controles">⚙</button>
+  </header>
+  <div class="matchline"><div class="match-player"><span class="team-dot blue"></span><span id="myLabel">TÚ</span><b id="myScore">0</b></div><div class="match-versus">VS</div><div class="match-player enemy"><b id="enemyScore">0</b><span id="enemyLabel">BOT</span><span class="team-dot orange"></span></div></div>
+  <div class="enemy-vitals"><span>RIVAL <b id="enemyHpNumber">100</b></span><div class="enemy-vitals-track"><i id="enemyHpBar"></i></div></div>
+  <div id="hitMarker" class="hit-marker">✕</div>
+  <div class="toast" id="toast"></div>
+  <div class="hud-bottom">
+    <div class="vitals"><div class="vital-line"><span>ESCUDO</span><b id="shieldNumber">50</b></div><div class="bar shield"><div id="shieldBar"></div></div><div class="vital-line"><span>VIDA</span><b id="hpNumber">100</b></div><div class="bar hp"><div id="hpBar"></div></div></div>
+    <div class="loadout"><div class="slot active" id="rifleSlot"><kbd id="rifleKey">1</kbd><span class="slot-icon">⌁</span><div>FUSIL<small>RÁPIDO</small></div></div><div class="slot" id="shotgunSlot"><kbd id="shotgunKey">2</kbd><span class="slot-icon">⋙</span><div>ESCOPETA<small>CORTO ALCANCE</small></div></div><div class="slot build-slot" id="wallSlot"><kbd id="wallKey">Q</kbd><span class="slot-icon">▥</span><div>MURO<small>CONSTRUIR</small></div></div><div class="slot build-slot" id="rampSlot"><kbd id="rampKey">E</kbd><span class="slot-icon">◢</span><div>RAMPA<small>CONSTRUIR</small></div></div><div class="slot build-slot" id="floorSlot"><kbd id="floorKey">R</kbd><span class="slot-icon">▤</span><div>TERRA<small>PLATAFORMA</small></div></div><div class="slot build-slot" id="pyramidSlot"><kbd id="pyramidKey">F</kbd><span class="slot-icon">⌂</span><div>PIRÀMIDE<small>COBERTA</small></div></div></div>
+    <div class="status-box"><span id="statusLabel">LISTO</span><small id="statusDetail">Clic para capturar el ratón</small></div>
+  </div>
+  <div class="overlay" id="menu">
+    <div class="menu-panel">
+      <div class="eyebrow">COMBATE 1 CONTRA 1</div>
+      <h1>Construye.<br><em>Apunta.</em> Sobrevive.</h1>
+      <p>Duelo de disparos en tercera persona. Levanta coberturas en pleno combate y domina la arena.</p>
+      <div class="menu-actions"><button class="primary" id="practiceBtn">JUGAR CONTRA BOT <span>→</span></button><button class="secondary" id="createBtn">CREAR SALA ONLINE</button></div>
+      <div class="join-row"><input id="joinCode" maxlength="6" placeholder="CÓDIGO DE SALA" aria-label="Código de sala"><button id="joinBtn">UNIRME</button></div>
+      <div class="menu-foot"><span>WASD moure · Ratolí apuntar · Clic disparar · Q/E/R/F construir</span><button id="menuSettingsBtn">Canviar controls</button></div>
+    </div>
+  </div>
+  <div class="overlay hidden" id="waiting"><div class="dialog"><div class="eyebrow">SALA PRIVADA</div><h2>Esperando rival</h2><p>Comparte este código o el enlace con otra persona.</p><div class="code-box"><strong id="roomCode">------</strong><button id="copyBtn">COPIAR ENLACE</button></div><button class="text-button" id="cancelWait">Volver al menú</button></div></div>
+  <div class="overlay hidden" id="settings"><div class="dialog settings-dialog"><div class="dialog-head"><div><div class="eyebrow">PERSONALIZA TU JUEGO</div><h2>Controles</h2></div><button class="close" id="closeSettings" aria-label="Cerrar">×</button></div><div class="bindings" id="bindings"></div><label class="sensitivity">Sensibilidad del ratón <strong id="sensitivityValue">50%</strong><input type="range" id="sensitivity" min="10" max="100" value="50"></label><div class="settings-foot"><button class="text-button" id="resetControls">Restablecer</button><span>Haz clic en una tecla para cambiarla.</span></div></div></div>
+  <div class="overlay hidden" id="pause"><div class="dialog"><div class="eyebrow">PARTIDA EN PAUSA</div><h2 id="pauseTitle">Continuar</h2><p id="pauseText">Haz clic para volver al combate.</p><button class="primary" id="resumeBtn">CONTINUAR <span>→</span></button><button class="text-button" id="backMenuBtn">Salir al menú</button></div></div>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

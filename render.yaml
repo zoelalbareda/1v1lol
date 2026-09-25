@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: duelo-3d
+    runtime: node
+    plan: free
+    buildCommand: echo "Sin dependencias de instalación"
+    startCommand: node server.js
+    healthCheckPath: /
